@@ -6,7 +6,7 @@ module.exports = function (config) {
 
     files: [
       'tmp/webpack/bundle.js',
-      'test/unit/**/*spec.js',
+      'test/unit/**/*.spec.js',
     ],
 
     browsers: [
