@@ -94,6 +94,7 @@ gulp.task('preprocess', function (cb) {
   return mergeStream(indexStream, libStream, webpackStream);
 });
 
+
 gulp.task('bundle', function () {
   return webpack(
     {
@@ -111,15 +112,15 @@ gulp.task('bundle', function () {
 });
 
 
-gulp.task('test:in_all', function (cb) {
+gulp.task('test:all', function (cb) {
   runSequence([
-    'test:in_browsers',
-    'test:in_node'
+    'test:browsers',
+    'test:node'
   ], cb);
 });
 
 
-gulp.task('test:in_browsers', function (cb) {
+gulp.task('test:browsers', function (cb) {
   new karma.Server({
     configFile: `${__dirname}/test/karma.conf.js`,
     singleRun: true,
@@ -127,7 +128,7 @@ gulp.task('test:in_browsers', function (cb) {
 });
 
 
-gulp.task('test:in_node', function () {
+gulp.task('test:node', function () {
   return gulp.src(testFiles)
     // gulp-jasmine works on filepaths so you can't have any plugins before it
     // See https://www.npmjs.com/package/gulp-jasmine for configuration details.
@@ -144,7 +145,7 @@ gulp.task('test:in_node', function () {
           displaySpecDuration: true,
           displayStacktrace: 'all',   // display stacktrace for each failed assertion, values: (all|specs|summary|none)
         })
-      ]
+      ],
     }))
 });
 
@@ -161,7 +162,7 @@ gulp.task('build', function (cb) {
 
 
 gulp.task('test', function (cb) {
-  runSequence('build', 'test:in_all', cb);
+  runSequence('build', 'test:all', cb);
 });
 
 
