@@ -115,7 +115,8 @@ gulp.task('bundle', function () {
 gulp.task('test:all', function (cb) {
   runSequence([
     'test:browsers',
-    'test:node'
+    'test:node',
+    'test:phantomjs'
   ], cb);
 });
 
@@ -123,7 +124,6 @@ gulp.task('test:all', function (cb) {
 gulp.task('test:browsers', function (cb) {
   new karma.Server({
     configFile: `${__dirname}/test/karma.conf.js`,
-    singleRun: true,
   }, cb).start();
 });
 
@@ -147,6 +147,15 @@ gulp.task('test:node', function () {
         })
       ],
     }))
+});
+
+
+gulp.task('test:phantomjs', function (cb) {
+  new karma.Server({
+    configFile: `${__dirname}/test/karma.conf.js`,
+    browsers: ['PhantomJS'],
+    port: 9877,
+  }, cb).start();
 });
 
 
