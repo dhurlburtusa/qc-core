@@ -3,6 +3,7 @@
 The core module of the QC ecosystem.  This module is intended to be isomorphic.  That is, it is designed
 to run on node or in a modern browser.
 
+[![Build Status](https://travis-ci.org/dhurlburtusa/qc-core.svg?branch=master)](https://travis-ci.org/dhurlburtusa/qc-core)
 
 ## Install
 
