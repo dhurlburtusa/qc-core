@@ -159,6 +159,11 @@ gulp.task('test:phantomjs', function (cb) {
 });
 
 
+gulp.task('verify:travisci', function (cb) {
+  runSequence('build', 'test:node', 'test:phantomjs', cb);
+});
+
+
 gulp.task('watch', function () {
   gulp.watch(srcFiles, ['build']);
   gulp.watch([].concat(srcFiles).concat(testFiles), ['test']);
