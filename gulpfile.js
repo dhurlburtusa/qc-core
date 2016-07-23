@@ -18,18 +18,23 @@ srcFiles = [
   './lib/**/*.js',
 ];
 
-// NOTE: Each spec is in charge of declaring its own dependencies.  Hence the reason only helper and spec files are
-// listed here.
+// NOTE: Each spec is in charge of declaring its own dependencies.  Hence the reason dependencies are not declared here.
 testFiles = [
   './test/unit/**/*.spec.js'
 ];
 
 
+/**
+ * "Cleans" all generated content.  That is, deletes the contents of the ./tmp/ directory.
+ */
 gulp.task('clean', function () {
   return del.sync('./tmp/');
 });
 
 
+/**
+ * Runs JSHint against the source files and then generates a report.
+ */
 gulp.task('jshint', function () {
   var READONLY = false;
 
@@ -62,6 +67,9 @@ gulp.task('jshint', function () {
 });
 
 
+/**
+ * Runs JSCS against the source files and then generates a report.
+ */
 gulp.task('jscs', function () {
   return gulp.src(srcFiles)
     .pipe(jscs({}))
@@ -69,6 +77,9 @@ gulp.task('jscs', function () {
 });
 
 
+/**
+ * "Lints" the source code.  More specifically, runs both the `jshint` and the `jscs` tasks.
+ */
 gulp.task('lint', function (cb) {
   // Separating jshint and jscs into separate tasks and running them sequentially makes it easier to determine which
   // one is complaining.
@@ -76,6 +87,9 @@ gulp.task('lint', function (cb) {
 });
 
 
+/**
+ * Preprocesses the source code.
+ */
 gulp.task('preprocess', function (cb) {
   var indexStream, libStream, webpackStream;
 
