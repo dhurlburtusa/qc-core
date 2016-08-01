@@ -1,11 +1,10 @@
 const babel = require('gulp-babel'),
     del = require('del'),
+    eslint = require('gulp-eslint'),
     gulp = require('gulp'),
     gutil = require('gulp-util'),
     jasmine = require('gulp-jasmine'),
     jasmineSpecReporter = require('jasmine-spec-reporter'),
-    jscs = require('gulp-jscs'),
-    jshint = require('gulp-jshint'),
     karma = require('karma'),
     mergeStream = require('merge-stream'),
     runSequence = require('run-sequence'),
@@ -33,57 +32,13 @@ gulp.task('clean', function () {
 
 
 /**
- * Runs JSHint against the source files and then generates a report.
- */
-gulp.task('jshint', function () {
-  var READONLY = false;
-
-  return gulp.src(srcFiles)
-    .pipe(jshint({
-      curly: true,
-      esversion: 6,
-      freeze: true,
-      globals: {
-        console: READONLY,
-        exports: true,
-        global: READONLY,
-        module: true,
-        require: READONLY,
-      },
-      immed: true,
-      maxlen: 180,
-      maxparams: 10,
-      maxstatements: 50,
-      newcap: true,
-      noarg: true,
-      nocomma: true,
-      nonbsp: true,
-      nonew: true,
-      undef: true,
-      unused: true,
-    }))
-    .pipe(jshint.reporter('jshint-stylish', { beep: true, verbose: true }))
-    .pipe(jshint.reporter('fail'));
-});
-
-
-/**
- * Runs JSCS against the source files and then generates a report.
- */
-gulp.task('jscs', function () {
-  return gulp.src(srcFiles)
-    .pipe(jscs({}))
-    .pipe(jscs.reporter());
-});
-
-
-/**
- * "Lints" the source code.  More specifically, runs both the `jshint` and the `jscs` tasks.
+ * "Lints" the source code.  More specifically, runs the source files against ESLint.
  */
 gulp.task('lint', function (cb) {
-  // Separating jshint and jscs into separate tasks and running them sequentially makes it easier to determine which
-  // one is complaining.
-  runSequence('jshint', 'jscs', cb);
+  return gulp.src(srcFiles)
+    .pipe(eslint({}))
+    .pipe(eslint.format())
+    .pipe(eslint.failAfterError());
 });
 
 

@@ -1,0 +1,197 @@
+env:
+  commonjs: true
+extends: 'eslint:recommended'
+globals:
+  console: false
+parserOptions:
+  sourceType: module
+root: true
+rules:
+  accessor-pairs: error
+  array-bracket-spacing: error
+  array-callback-return: error
+  arrow-body-style: error
+  arrow-parens:
+    - error
+    - as-needed
+  arrow-spacing: error
+  block-scoped-var: error
+  block-spacing: error
+  brace-style:
+    - error
+    - stroustrup
+    - allowSingleLine: true
+  camelcase: error
+  comma-spacing: error
+  comma-style: error
+  complexity: error
+  computed-property-spacing: error
+  consistent-this:
+    - error
+    - SELF
+  consistent-return: error
+  curly: error
+  dot-notation: error
+  eol-last: error
+  generator-star-spacing: error
+  indent:
+    - error
+    - 2
+  key-spacing: error
+  keyword-spacing: error
+  linebreak-style:
+    - error
+    - windows
+  max-len:
+    - error
+    - 180
+  max-params:
+    - error
+    - 10
+  max-statements:
+    - error
+    - 50
+  max-statements-per-line:
+    - error
+    - max: 2
+  new-cap: error
+  no-alert: error
+  no-array-constructor: error
+  no-bitwise: error
+  no-caller: error
+  no-catch-shadow: error
+  no-confusing-arrow: error
+  no-duplicate-imports: error
+  no-else-return: error
+  no-empty-function: error
+  no-eq-null: error
+  no-eval: error
+  no-extend-native: error
+  no-extra-bind: error
+  no-extra-label: error
+  no-floating-decimal: error
+  no-implied-eval: error
+  no-invalid-this: error
+  no-iterator: error
+  no-label-var: error
+  no-labels: error
+  no-lone-blocks: error
+  no-lonely-if: error
+  no-loop-func: error
+  no-magic-numbers:
+    - error
+    - ignoreArrayIndexes: true
+  no-mixed-operators: error
+  no-multi-spaces: error
+  no-multiple-empty-lines: error
+  no-new: error
+  no-new-func: error
+  no-new-object: error
+  no-new-require: error
+  no-new-wrappers: error
+  no-octal-escape: error
+  no-path-concat: error
+  no-process-env: error
+  no-process-exit: error
+  no-proto: error
+  no-restricted-imports: &restrictedModules
+    - error
+    - assert
+    - buffer
+    - child_process
+    - cluster
+    - crypto
+    - dgram
+    - dns
+    - domain
+    - events
+    - freelist
+    - fs
+    - http
+    - https
+    - module
+    - net
+    - os
+    - path
+    - punycode
+    - querystring
+    - readline
+    - repl
+    - smalloc
+    - stream
+    - string_decoder
+    - sys
+    - timers
+    - tls
+    - tracing
+    - tty
+    - url
+    - util
+    - vm
+    - zlib
+  no-restricted-modules:
+    *restrictedModules
+  no-return-assign: error
+  no-script-url: error
+  no-self-compare: error
+  no-sequences: error
+  no-shadow:
+    - error
+    - builtinGlobals: true
+      hoist: all
+  no-shadow-restricted-names: error
+  no-spaced-func: error
+  no-tabs: error
+  no-throw-literal: error
+  no-trailing-spaces: error
+  no-undef-init: error
+  no-undefined: error
+  no-underscore-dangle: error
+  no-unmodified-loop-condition: error
+  no-unneeded-ternary: error
+  no-unused-expressions: error
+  no-use-before-define: error
+  no-useless-call: error
+  no-useless-computed-key: error
+  no-useless-concat: error
+  no-useless-constructor: error
+  no-useless-escape: error
+  no-useless-rename: error
+  no-var: error
+  no-whitespace-before-property: error
+  no-with: error
+  object-curly-newline: error
+  object-shorthand: error
+  prefer-arrow-callback: error
+  prefer-rest-params: error
+  prefer-spread: error
+  prefer-template: error
+  quotes:
+    - error
+    - single
+    - avoidEscape: true
+      allowTemplateLiterals: true
+  radix: error
+  require-jsdoc: error
+  rest-spread-spacing: error
+  semi:
+    - error
+    - always
+  semi-spacing: error
+  space-before-blocks: error
+  space-before-function-paren:
+    - error
+    - anonymous: always
+      named: never
+  space-in-parens: error
+  space-infix-ops: error
+  space-unary-ops: error
+  spaced-comment: error
+  template-curly-spacing: error
+  unicode-bom: error
+  valid-jsdoc:
+    - error
+    - requireReturn: false
+  vars-on-top: error
+  yield-star-spacing: error
+  yoda: error
